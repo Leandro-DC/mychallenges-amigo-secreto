@@ -50,14 +50,15 @@ function agregarAmigo() {
         amigos.push(nombreIngresado);
         console.log(amigos);
     }
-    
     limpiarCaja();
-    
     return;
 }
 
 /*Limpiar el campo de entrada: Después de añadir el nombre, restablecer el 
 campo de texto a una cadena vacía.*/
 function limpiarCaja() {
-    let valorCaja = document.getElementById("amigo").value = "";
+    let valorCaja = document.getElementById("amigo").value = "";//copia de logica de programacion
+}
+function agregarALista() {
+    let listaDeAmigos = domcumen.getElementById("listaAmigos");
 }
