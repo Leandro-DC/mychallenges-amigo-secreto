@@ -13,6 +13,7 @@ function agregarAmigo() {
     console.log(nombreIngresado);
     return;
 }*/
+
 /*Validar la entrada: Implementar una validación para asegurarse de que el
 campo no esté vacío. Si está vacío, mostrar un alert con un mensaje de error:
 "Por favor, inserte un nombre."
@@ -20,7 +21,7 @@ campo no esté vacío. Si está vacío, mostrar un alert con un mensaje de error
 function agregarAmigo() {
     let nombreIngresado = (document.getElementById("amigo").value);
     console.log(nombreIngresado);
-    if (nombreIngresado.trim() === "") {
+    if (nombreIngresado === "") {
         alert('Por favor, ingrese un nombre.');
     }
     return;
@@ -31,34 +32,61 @@ que almacena los nombre de amigos usando el método.push().*/
 
 /* Con ayuda web (trim)
 function agregarAmigo() {
-    let nombreIngresado = (document.getElementById("amigo").value);
-    console.log(typeof nombreIngresado);
-    if (nombreIngresado.trim() === "") {
-        alert('Por favor, ingrese un nombre.');
-    } else {
-        amigos.push(nombreIngresado);
-    }
-    limpiarCaja();
-    return;
-}*/
-function agregarAmigo() {
-    let nombreIngresado = (document.getElementById("amigo").value);
+    let nombreIngresado = (document.getElementById("amigo").value).trim();
     console.log(nombreIngresado);
     if (nombreIngresado === "") {
         alert('Por favor, ingrese un nombre.');
     } else {
         amigos.push(nombreIngresado);
-        console.log(amigos);
     }
-    limpiarCaja();
     return;
-}
+}*/
 
 /*Limpiar el campo de entrada: Después de añadir el nombre, restablecer el 
 campo de texto a una cadena vacía.*/
+//copia de logica de programacion
 function limpiarCaja() {
-    let valorCaja = document.getElementById("amigo").value = "";//copia de logica de programacion
+    let valorCaja = document.getElementById("amigo").value = "";
 }
-function agregarALista() {
-    let listaDeAmigos = domcumen.getElementById("listaAmigos");
+
+//Aca mejore la funcion con chat gpt, ya que habia cosas que no funcionaban.
+//Agregue trim() para evitar espacios en los nombres, con ayuda de web y gpt.
+//Agregue return dentro del if, ya que si no me aquegaba amigos vacios a la lista, ayuda de gpt.
+//Al agregar return, saque el else y deje lo del else afuera del if, y ahora si funciona.
+//Agregue limpiarCaja()
+//Agregue actualizarListaAmigos()
+
+function agregarAmigo() {
+    let nombreIngresado = (document.getElementById("amigo").value).trim();
+
+    console.log(nombreIngresado);
+    
+    if (nombreIngresado === "") {
+        alert('Por favor, ingrese un nombre.');
+        return;
+    }
+    amigos.push(nombreIngresado);
+    console.log(amigos);
+    limpiarCaja();
+    actualizarListaAmigos();
+    return;
+}
+
+/*Aca tuve bastante problemas, cuando queria llamar listaAmigos, no me funcionaba porque escribi mal
+el (let listaDeAmigos = domcumen.getElementById("listaAmigos");) escribi mal document.
+Despues no sabia y no entendia como usar el bucle for, asique estuve investigando pero no habia caso, aca
+fue cuando tuve que empezar a usar chat gpt y me ayudo con varios errores mencionados anteriormente.
+tuve otro error al usar document de nuevo, usaba document.createComment en vez de document.createElement,
+entonces no me creaba los nombres en lista de la pagina web.
+*/
+
+function actualizarListaAmigos() {
+    let listaDeAmigos = document.getElementById("listaAmigos");
+    listaDeAmigos.innerHTML ="";
+
+    for (let i = 0; i < amigos.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = amigos[i];
+        listaDeAmigos.appendChild(li);
+    }
 }
