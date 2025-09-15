@@ -90,3 +90,42 @@ function actualizarListaAmigos() {
         listaDeAmigos.appendChild(li);
     }
 }
+
+/*LLamo la funcion del boton sortear amigo, y verifico si hay amigos dentro del array, si no hay,
+lanza un alert de que no hay. Luego ya verificado sorteo el amigo secreto.*/
+
+function sortearAmigo() {
+    if(amigos.length === 0) {
+        alert("No hay amigos ingresados!!!")
+        return;
+    }
+    let sorteo = Math.floor(Math.random()*amigos.length);
+    let amigoSecreto = amigos[sorteo];
+    console.log(amigoSecreto);
+
+    let resultadoSorteo = document.getElementById("resultado");
+    resultadoSorteo.innerHTML = `${amigoSecreto}`;
+}
+
+/*
+//Estas funciones quise usarla pero para eso debo modificar el boton onclick en html, cambiando la
+funcion por ganadorSorteo(). Cosa que no pide el proyecto
+
+function sortearAmigo() {
+    if (amigos.length === 0) {
+        alert("No hay amigos disponibles para sortear.");
+        return;
+    }
+
+    let indice = Math.floor(Math.random() * amigos.length);
+    return amigos[indice]; // 👈 devolvemos el nombre sorteado
+}
+
+function ganadorSorteo() {
+    let resultado = document.getElementById("resultado");
+    let amigoSecreto = sortearAmigo();
+
+    if (amigoSecreto) { // solo si sortearAmigo() devolvió algo
+        resultado.innerHTML = `🎉 El amigo secreto es: <strong>${amigoSecreto}</strong>`;
+    }
+}*/
